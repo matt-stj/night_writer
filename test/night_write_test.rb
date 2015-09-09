@@ -1,10 +1,9 @@
-require 'minitest'                     # => true
-require_relative '../lib/night_write'  # ~> TypeError: no implicit conversion of nil into String
+require 'minitest'
+require_relative '../lib/night_write'
 
 class NightWriterTest < Minitest::Test
 
   def test_we_can_import_a_file
-    skip
     `ruby ../lib/night_write.rb ../input/message.txt ../output/writer.rb`
   end
 
@@ -33,14 +32,7 @@ class NightWriterTest < Minitest::Test
     # "....0.0.0....00.0.0..." == "....0.0.0....00.0.0..."
   end
 
-end
+  def test_we_are_notified_if_the_converter_cant_proceed_do_to_unsupported_characters
+  end
 
-# ~> TypeError
-# ~> no implicit conversion of nil into String
-# ~>
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/lib/night_write.rb:9:in `initialize'
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/lib/night_write.rb:9:in `open'
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/lib/night_write.rb:9:in `<class:NightWriter>'
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/lib/night_write.rb:1:in `<top (required)>'
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/test/night_write_test.rb:2:in `require_relative'
-# ~> /Users/Matt/Turing/1-Modual/Projects/night_writer/test/night_write_test.rb:2:in `<main>'
+end

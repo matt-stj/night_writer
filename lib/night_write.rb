@@ -1,5 +1,10 @@
 class NightWriter
 
+  im_running_for_real = ($PROGRAM_NAME == __FILE__)
+
+  if im_running_for_real
+  end
+
   if $PROGRAM_NAME == __FILE__
     input = File.open(ARGV[0], "r")
     output = File.open(ARGV[1], 'w')
@@ -21,7 +26,9 @@ class NightWriter
   puts "Created '#{ARGV[1]}' containing #{length} characters"
 
 
-  def self.to_braille(input)
+  def self.to_braille(file)
   end
 
 end
+
+braille = NightWriter.to_braille(input)

@@ -18,8 +18,9 @@
 
           }
 
-string = "hello world this is a longer test - with a bit"
+string = "hello world this is a longer test"
 split_string = string.downcase.split("")
+
 @new_line_1 = []
 line_1 = split_string.each do |x|
   @new_line_1.push(@key[x][0])
@@ -44,16 +45,17 @@ end
 @final_line_3 = @flat_line_3.join("")
 
 @block = [@final_line_1, @final_line_2, @final_line_3].join("\n")
-               #   --------------------------
-                #    "0.0.0.0.0....00.0.0.00"
-                #    "00.00.0..0..00.0000..0"
-                #    "....0.0.0....00.0.0...""
-                # "hello world"
-"0.0.0.0.0....00.0.0.00" == "0.0.0.0.0....00.0.0.00"
-"0..00.0..0..00.0000.0." == "0..00.0..0..00.0000.0."
-"....0.0.0....00.0.0..." == "....0.0.0....00.0.0..."
 
-# formatting:: http://stackoverflow.com/questions/29292867/how-to-edit-every-x-amount-of-lines-in-txtfile-in-ruby
+
 
 
 puts @block
+
+
+#### input output for hello world ####
+# "hello world"
+# "0.0.0.0.0....00.0.0.00" == "0.0.0.0.0....00.0.0.00"
+# "0..00.0..0..00.0000.0." == "0..00.0..0..00.0000.0."
+# "....0.0.0....00.0.0..." == "....0.0.0....00.0.0..."
+
+# formatting:: http://stackoverflow.com/questions/29292867/how-to-edit-every-x-amount-of-lines-in-txtfile-in-ruby

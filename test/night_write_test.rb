@@ -4,8 +4,6 @@ require_relative '../lib/night_write'
 class NightWriterTest < Minitest::Test
 
   def test_we_can_import_a_file
-    skip
-    path = File.expand_path("../lib/message.txt", __dir__)
     `ruby ../lib/night_write.rb ../input/message.txt ../output/writer.rb`
   end
 

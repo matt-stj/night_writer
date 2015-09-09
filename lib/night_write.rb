@@ -4,8 +4,8 @@ class NightWriter
       handle = File.open(ARGV[0], "r")
       writer = File.open(ARGV[1], 'w')
     else
-      handle = File.open("/Users/Matt/Turing/1-Modual/Projects/night_writer/message.txt", "r")  # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/message.txt>
-      writer = File.open("/Users/Matt/Turing/1-Modual/Projects/night_writer/writer.txt", "w")   # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/writer.txt>
+      handle = File.open("/Users/Matt/Turing/1-Modual/Projects/night_writer/input/message.txt", "r")  # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/message.txt>
+      writer = File.open("/Users/Matt/Turing/1-Modual/Projects/night_writer/output/writer.txt", "w")   # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/writer.txt>
     end                                                                                         # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/writer.txt>
     @data = []                                                                                  # => []
     handle.each_line do |line|                                                                  # => #<File:/Users/Matt/Turing/1-Modual/Projects/night_writer/message.txt>

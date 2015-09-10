@@ -16,6 +16,16 @@ class NightReader
     line.split("").each_slice(2) { |pair| new_array << pair }
   end
 
+  def self.transpose
+    array_to_transpose = []
+    array_to_transpose << @line_1
+    array_to_transpose << @line_2
+    array_to_transpose << @line_3
+
+    array_to_transpose.transpose
+  end
+
+
   def self.build_complete_array_of_pairs
     @line_1.map! {|a| a.join}
     @line_2.map! {|a| a.join}
@@ -55,18 +65,18 @@ class NightReader
         sentence << AlphabetKey::KEY.key(char)
       end
     end
-    puts sentence.join("")
+    text = sentence.join("")
+    to_text(text)
   end
 
-
-  #### push each character into an array of arrays (top, mid, bottom)-  like in hash
-  #### iterate over each character and check against hash key
-
-  def self.to_text(input)
-    line_1 = process_the_braille(braille_data)
-    FileIO.exporter(block)
+  def self.to_text(text)
+    FileIO.text_exporter(text)
   end
 
 end
 
-braille = NightReader.process_the_braille(@braille_data)
+this_is_the_program_and_not_the_test = ($PROGRAM_NAME == __FILE__)
+
+if this_is_the_program_and_not_the_test
+  braille = NightReader.process_the_braille(@braille_data)
+end

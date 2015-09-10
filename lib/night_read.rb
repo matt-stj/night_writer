@@ -46,7 +46,10 @@ class NightReader
     combined_characters_output.each_with_index do |char, index|
       if char == ["..", "..", ".0"]
         next_element = combined_characters_output[index + 1]
-        sentence << AlphabetKey::KEY.key(next_element).upcase
+        next_element[0].prepend("..")
+        next_element[1].prepend("..")
+        next_element[2].prepend(".0")
+      
       else
         AlphabetKey::KEY.has_value?(char)
         sentence << AlphabetKey::KEY.key(char)

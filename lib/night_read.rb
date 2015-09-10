@@ -49,13 +49,13 @@ class NightReader
         next_element[0].prepend("..")
         next_element[1].prepend("..")
         next_element[2].prepend(".0")
-      
+
       else
         AlphabetKey::KEY.has_value?(char)
         sentence << AlphabetKey::KEY.key(char)
       end
     end
-    p sentence.join("")
+    puts sentence.join("")
   end
 
 

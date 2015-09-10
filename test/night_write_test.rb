@@ -5,20 +5,24 @@ require_relative '../lib/alphabet_key'
 
 class NightWriterTest < Minitest::Test
 
-  def test_we_can_import_a_file
-    `ruby ../lib/night_write.rb ../input/message.txt ../output/writer.rb`
+  def test_we_can_import_and_export_files
+    full_path = "~/Turing/1-Modual/Projects/night_writer"
+    assert_equal "Created '/Users/Matt/Turing/1-Modual/Projects/night_writer/output/writer.rb' containing 200 characters\n",
+    `ruby #{full_path}/lib/night_write.rb #{full_path}/input/message.txt #{full_path}/output/writer.rb`
+
   end
 
-  def test_we_can_turn_the_file_into_one_complete_string_without_line_breaks_or_capital_letters
+  def test_we_can_turn_the_file_into_one_complete_string_without_line_breaks
     skip
     assert_equal "this is the new string",
                  FileIO.importer("THIS IS the new STRING")
   end
 
   def test_we_can_convert_a_single_character_to_braille
-    assert_equal     "00
-                      ..
-                     ..",
+    skip
+    assert_equal     "00\n" +
+                     "..\n" +
+                      "..",       NightWriter.to_braille("h")
 
   end
 
@@ -28,6 +32,7 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_we_are_notified_if_the_converter_cant_proceed_do_to_unsupported_characters
+    skip
   end
 
 end

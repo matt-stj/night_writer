@@ -67,17 +67,24 @@ class NightWriterTest < Minitest::Test
                     ".0.....00.0..00....0.00.0..00...",       NightWriter.to_braille("HeLlO wOrLd")
   end
 
-  # def test_we_can_convert_text_that_has_carriage_returns
-  #   assert_equal    "...00..0.0...000000..0..0.0..0..0.0..00.0.00.0\n" +
-  #                   "..00000.0...0..00...00..00..0...00.000..00.00.\n" +
-  #                   ".00.....0.....0.0.000.......0...0...0.000.0.0.",       NightWriter.to_braille("This \n has")
-  # end
+  def test_our_output_file_will_cap_lines_at_80_characters
+    assert_equal    "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n" +
+                    "................................................................................\n" +
+                    "................................................................................",
 
-
-  def test_eighty_lines
-    skip
+                    NightWriter.to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   end
 
+  def test_our_output_file_will_wrap_blocks_of_braille_after_80_characters
+    assert_equal    "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n" +
+                    "................................................................................\n" +
+                    "................................................................................\n" +
+                    "0.\n" +
+                    "..\n" +
+                    "..",
+
+                    NightWriter.to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  end
 
 
 end

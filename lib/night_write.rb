@@ -13,6 +13,7 @@ class NightWriter
     block = formatter(chopped_1, chopped_2, chopped_3)
   end
 
+
   private
 
   def self.convert_each_line_to_braille(braille_line, text)

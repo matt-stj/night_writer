@@ -20,12 +20,16 @@ class FileIO
 
   def self.braille_importer
     input = File.open(ARGV[0], "r")
-    file_text= []
+    file_text = []
     input.each_line do |line|
-      file_text << (line.strip.gsub("\n",''))
+      file_text << (line.strip)
     end
-    input.close
-    file_text
+    new_array = []
+    (file_text.size/2).times do |i|
+      new_array << file_text[i] + file_text[i+3]
+      i += 1
+    end
+    new_array
   end
 
   def self.text_exporter(text)

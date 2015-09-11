@@ -14,7 +14,13 @@ class NightWriter
 
   def self.convert_each_line_to_braille(braille_line, text)
     split_string = text.split("")
-    line = split_string.map {|x| AlphabetKey::KEY.fetch(x)[braille_line]}.flatten.join("")
+    line = split_string.map do |x|
+      AlphabetKey::KEY.fetch(x)[braille_line]
+    end.flatten.join("")
+  end
+
+  def line_chopper
+    
   end
 
 

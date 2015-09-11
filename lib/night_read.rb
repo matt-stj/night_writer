@@ -3,26 +3,19 @@ require_relative 'file_io'
 
 class NightReader
 
-  # def self.convert_braille(braille)
-  #   file_text = []
-  #   braille.each_line do |line|
-  #     file_text << (line.strip)
-  #   end
-  #   new_array = []
-  #   (file_text.size/2).times do |i|
-  #     new_array << file_text[i] + file_text[i+3]
-  #     i += 1
-  #   end
-  #   process_the_braille(new_array)
-  # end
+  def self.convert_braille(braille)
+    file_text = []
+    braille.each do |line|
+      file_text << (line.strip.gsub('\n', ''))
+    end
+    to_text(file_text)
+  end
 
-
-
-  def self.process_the_braille(braille_data)
+  def self.to_text(braille)
     @line_1 = []; @line_2 = []; @line_3 = []
-    line_1 = break_up_braille_into_pairs(braille_data[0], @line_1)
-    line_2 = break_up_braille_into_pairs(braille_data[1], @line_2)
-    line_3 = break_up_braille_into_pairs(braille_data[2], @line_3)
+    line_1 = break_up_braille_into_pairs(braille[0], @line_1)
+    line_2 = break_up_braille_into_pairs(braille[1], @line_2)
+    line_3 = break_up_braille_into_pairs(braille[2], @line_3)
     build_complete_array_of_pairs
   end
 
@@ -68,7 +61,6 @@ private
       end
     end
     text = sentence.join("")
-    output(text)
   end
 
   def self.capitalize(index, combined_characters_output)
@@ -78,23 +70,11 @@ private
     next_element[2].prepend(".0")
   end
 
-  def self.output(text)
-    FileIO.text_exporter(text)
-  end
-
-    def self.transpose
-      array_to_transpose = []
-      array_to_transpose << @line_1
-      array_to_transpose << @line_2
-      array_to_transpose << @line_3
-      array_to_transpose.transpose
-    end
-
 end
 
 this_is_the_program_and_not_the_test = ($PROGRAM_NAME == __FILE__)
 
 if this_is_the_program_and_not_the_test
-  braille = NightReader.process_the_braille(FileIO.braille_importer)
-  # FileIO.text_exporter(text)
+  text = NightReader.convert_braille(FileIO.braille_importer)
+  FileIO.text_exporter(text)
 end

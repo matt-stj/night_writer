@@ -48,5 +48,5 @@ this_is_the_program_and_not_the_test = ($PROGRAM_NAME == __FILE__)
 
 if this_is_the_program_and_not_the_test
   block = NightWriter.to_braille(FileIO.text_importer)
-  FileIO.braille_exporter (block)
+  FileIO.braille_exporter(block)
 end

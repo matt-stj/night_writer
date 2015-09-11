@@ -4,7 +4,7 @@ class FileIO
     input = File.open(ARGV[0], "r")
     file_text= []
     input.each_line do |line|
-      file_text << (line.strip.gsub('\n', ''))
+      file_text << (line.chomp.strip.gsub('\n', ''))
     end
     input.close
     stripped_text = file_text.join(" ")
@@ -22,12 +22,16 @@ class FileIO
     input = File.open(ARGV[0], "r")
     file_text = []
     input.each_line do |line|
-      file_text << (line.strip)
+      file_text << (line.strip.gsub('\n', ''))
     end
     new_array = []
-    (file_text.size/2).times do |i|
-      new_array << file_text[i] + file_text[i+3]
-      i += 1
+    if file_text.to_s.size > 180
+      (file_text.size/2).times do |i|
+        new_array << file_text[i] + file_text[i+3]
+        i += 1
+      end 
+    else
+      new_array = file_text
     end
     new_array
   end

@@ -32,6 +32,13 @@ class NightWriterTest < Minitest::Test
 
   end
 
+  def test_we_can_convert_punctuation_to_braille
+
+    assert_equal    "............\n" +
+    "00..000.0...\n" +
+    ".0..0.00..00",       NightWriter.to_braille(". !?,-")
+  end
+
   def test_we_can_convert_a_single_uppercase_character_to_braille
 
     assert_equal    "..0.\n" +

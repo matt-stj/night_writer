@@ -5,6 +5,7 @@ require_relative '../lib/alphabet_key'
 
 
 class NightReaderTest < Minitest::Test
+  attr_accessor :project_root, :original_english_file, :converted_braille_file, :final_english_file
 
     def test_we_can_convert_a_single_lowercase_braille_character_to_text
       project_root           = File.expand_path("..", __dir__)

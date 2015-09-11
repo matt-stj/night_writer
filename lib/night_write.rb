@@ -2,7 +2,6 @@ require_relative 'alphabet_key'
 require_relative 'file_io'
 
 class NightWriter
-
   def self.to_braille(text)
     line_1 = convert_each_line_to_braille(0, text)
     line_2 = convert_each_line_to_braille(1, text)

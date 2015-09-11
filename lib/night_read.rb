@@ -2,7 +2,6 @@ require_relative 'alphabet_key'
 require_relative 'file_io'
 
 class NightReader
-
   def self.convert_braille(braille)
     file_text = []
     braille.each do |line|
@@ -10,6 +9,8 @@ class NightReader
     end
     to_text(file_text)
   end
+
+  private
 
   def self.to_text(braille)
     @line_1 = []; @line_2 = []; @line_3 = []
@@ -19,16 +20,14 @@ class NightReader
     build_complete_array_of_pairs
   end
 
-private
-
   def self.break_up_braille_into_pairs(line, new_array)
     line.split("").each_slice(2) { |pair| new_array << pair }
   end
 
   def self.build_complete_array_of_pairs
-    @line_1.map! {|a| a.join}
-    @line_2.map! {|a| a.join}
-    @line_3.map! {|a| a.join}
+    @line_1.map! { |a| a.join }
+    @line_2.map! { |a| a.join }
+    @line_3.map! { |a| a.join }
     group_together_characters
   end
 
@@ -41,7 +40,7 @@ private
       @final_output << @line_3[i]
       i += 1
     end
-      combine
+    combine
   end
 
   def self.combine
@@ -69,7 +68,6 @@ private
     next_element[1].prepend("..")
     next_element[2].prepend(".0")
   end
-
 end
 
 this_is_the_program_and_not_the_test = ($PROGRAM_NAME == __FILE__)

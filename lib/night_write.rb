@@ -7,7 +7,10 @@ class NightWriter
     line_1 = convert_each_line_to_braille(0, text)
     line_2 = convert_each_line_to_braille(1, text)
     line_3 = convert_each_line_to_braille(2, text)
-    block = [line_1, line_2, line_3].join("\n")
+    chopped_1 = line_chopper(line_1)
+    chopped_2 = line_chopper(line_2)
+    chopped_3 = line_chopper(line_3)
+    block = formatter(chopped_1, chopped_2, chopped_3)
   end
 
   private
@@ -19,8 +22,22 @@ class NightWriter
     end.flatten.join("")
   end
 
-  def line_chopper
-    
+  def self.line_chopper(line)
+    line.scan(/.{1,80}/)
+  end
+
+  def self.formatter(top_line, middle_line, bottom_line)
+    output = ""
+    top_line.size.times do |index|
+      output << top_line[index]
+      output << "\n"
+      output << middle_line[index]
+      output << "\n"
+      output << bottom_line[index]
+      output << "\n" if index != (top_line.size - 1)
+      index += 1
+    end
+    output
   end
 
 
